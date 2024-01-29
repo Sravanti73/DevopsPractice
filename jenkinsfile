@@ -7,10 +7,10 @@ node{
         app=docker.build("sravanti73/helloworld-docker")
     }
     stage('test'){
-       docker.withregistry('https://registry.hub.docker.com', 'dockerhub-cred'){
-        app.inside{
+       
+        app.inside("--entrypoint=''"){
             sh 'echo "test passed"'
-        }
+        
       }
     }
     stage('push image'){
