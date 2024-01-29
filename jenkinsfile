@@ -9,7 +9,8 @@ node{
         app=docker.build("sravanti73/helloworld")
     }
     stage('test'){
-        app.inside{
+        docker.withregistry('https://registry.hub.docker.com', 'dockerhub-cred'){
+          app.inside{
             sh 'echo "test passed"'
         }
     }
