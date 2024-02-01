@@ -7,7 +7,7 @@ node{
         app=docker.build("sravanti73/helloworld-docker")
     }
     stage('test'){
-        app.inside('-v /var/run/docker.sock:/var/run/docker.sock -w /app'){
+        app.run('-w /Jenkinsdata/Jenkins/.jenkins/workspace/Test_Pipeline/).inside(){
             sh 'echo "test passed"'
         
       }
