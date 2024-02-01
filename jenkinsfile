@@ -6,12 +6,12 @@ node{
     stage('build'){
         app=docker.build("sravanti73/helloworld-docker")
     }
-    stage('test'){
-        app.run("-w /Jenkinsdata/Jenkins/.jenkins/workspace/Test_Pipeline/").inside(){
-            sh 'echo "test passed"'
+    #stage('test'){
+     #   app.run("-w /Jenkinsdata/Jenkins/.jenkins/workspace/Test_Pipeline/").inside(){
+      #      sh 'echo "test passed"'
         
-      }
-    }
+     # }
+    #}
     stage('push image'){
         docker.withregistry('https://registry.hub.docker.com', 'dockerhub-cred'){
             app.push("${env.Build_Number}")
